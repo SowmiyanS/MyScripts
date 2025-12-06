@@ -1,0 +1,17 @@
+#!/bin/bash
+
+interface=$(ip a | awk -F ":" '{print $2}' | grep 'enx')
+
+echo "Assigning IP address 192.168.42.128/24 to $interface"
+
+sudo ip addr add 192.168.42.128/24 dev $interface
+
+echo "Brining up the $interface"
+
+sudo ip link set dev $interface up
+
+echo "Adding default route via 192.168.42.129 to $interface"
+
+sudo ip route add default via 192.168.42.129 dev $interface
+
+echo "Done"
