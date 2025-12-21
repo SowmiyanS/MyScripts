@@ -12,3 +12,6 @@ while IFS=: read -r ssid passwd; do
     # it successfully generated the wpa_supplicant.conf file in root's home director
     # which I copied and pasted to /etc/wpa_supplicant/wpa_supplicant-wlx000911020cd.conf
 done < wifi.txt
+
+echo "done now you have to add the id_str field = vivo for vivo ssid network and id_str = other for other networks"
+echo "also you can optionally set the priority field to 10 of more preference if both low priority 5 is available"

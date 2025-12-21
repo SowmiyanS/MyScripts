@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+name="screenshot_$(date +"%d_%H:%M:%S")"
+
+cd /tmp/
+xwd -root -out "$name"
+ffmpeg -i $name "$name.png"
+rm "$name"
+# this will open the image in fullscreen mode but the feh will
+# not respond so we have to switch to a workspace that is free
+# then only we can zoom and stuff like that.
+feh --force-aliasing -F "$name.png"
+#feh --force-aliasing -F -Z "$name"
